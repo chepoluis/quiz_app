@@ -1,10 +1,11 @@
 Rails.application.routes.draw do
-  # root 'pages#index'
-
   devise_for :users
-  get 'home/index'
+  root 'pages#index'
+  # root 'home#index'
+
+  # get 'home/index'
   # For details on the DSL available within this file, see https://guides.rubyonrails.org/routing.html
-  root to: "home#index"
+  #root to: "home#index"
 
   namespace :api do
     namespace :v1 do
@@ -15,4 +16,5 @@ Rails.application.routes.draw do
   end
 
   get '*path', to: 'pages#index', via: :all
+  # get '*path', to: 'home#index', via: :all
 end
