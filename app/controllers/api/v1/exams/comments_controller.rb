@@ -1,7 +1,4 @@
-class Api::V1::Questions::CommentsController < Api::V1::CommentsQuestionController
-    # protect_from_forgery with: :null_session
-    # before_action :authenticate_user!
-    
+class Api::V1::Exams::CommentsController < Api::V1::CommentsExamController
     def index
         comments = @commentable.comments.all
     
@@ -50,21 +47,3 @@ class Api::V1::Questions::CommentsController < Api::V1::CommentsQuestionControll
         params.require(:comment).permit(:text)
     end
 end
-
-
-# class Api::V1::Questions::CommentsController < Api::V1::CommentsController
-#     before_action :set_commentable
-
-#     # def commentable
-#     #     @commentable ||= Question.find(params[:question_id])
-#     # end
-
-#     private
-
-#     def set_commentable
-#         @commentable ||= Question.find(params[:question_id])
-#         puts "@commentable #{@commentable}"
-#     end
-# end
-
-# ||= si no tiene valor no se va a ejecutar

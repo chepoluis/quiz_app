@@ -1,11 +1,10 @@
-class Api::V1::CommentsController < ApplicationController
+class Api::V1::CommentsQuestionController < ApplicationController
     before_action :set_commentable
 
     private
 
     def set_commentable
         @commentable ||= Question.find(params[:question_id])
-        puts "@commentable #{@commentable}"
     end
 end
 

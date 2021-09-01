@@ -15,33 +15,33 @@
 
 exams = Exam.create([
     {
-        category: "Geography",
-        group: "multiple",
-        difficulty: "hard"
+        category: 'Geography',
+        group: 'multiple',
+        difficulty: 'hard'
     },
     {
-        category: "Maths",
-        group: "multiple",
-        difficulty: "easy"
+        category: 'Maths',
+        group: 'multiple',
+        difficulty: 'easy'
     }
 ])
 
 questions = Question.create([
     {
-        question_name: "¿Que es Colima?",
-        correct_answer: "Un estado",
+        question_name: '¿Que es Colima?',
+        correct_answer: 'Un estado',
         incorrect_answers: ['Un continente', 'Un pais', 'Un oceano'],
         exam: exams.first
     },
     {
-        question_name: "¿Que es Mina?",
-        correct_answer: "Un municipio",
+        question_name: '¿Que es Mina?',
+        correct_answer: 'Un municipio',
         incorrect_answers: ['Un continente', 'Un pais', 'Un oceano'],
         exam: exams.first
     },
     {
-        question_name: "¿Cuanto es 2 + 2?",
-        correct_answer: "4",
+        question_name: '¿Cuanto es 2 + 2?',
+        correct_answer: '4',
         incorrect_answers: ['2', '1', 'Pez'],
         exam: exams[1]
     }
@@ -49,15 +49,15 @@ questions = Question.create([
 
 reviews = Review.create([
     {
-        title: "Nice",
-        description: "Chido",
+        title: 'Nice',
+        description: 'Chido',
         score: 5,
         user: User.first,
         exam: exams.first
     },
     {
-        title: "Good",
-        description: "Great",
+        title: 'Good',
+        description: 'Great',
         score: 3,
         user: User.first,
         exam: exams.first
