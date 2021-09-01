@@ -1,7 +1,7 @@
 module Api
     module V1
         class ExamsController < ApplicationController
-            protect_from_forgery with: :null_session
+            # protect_from_forgery with: :null_session
 
             def index
                 exams = Exam.all

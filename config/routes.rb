@@ -11,7 +11,9 @@ Rails.application.routes.draw do
     namespace :v1 do
         resources :exams, param: :slug
         resources :reviews, only: [:create, :destroy]
-        resources :questions
+        resources :questions do
+          resources :comments, module: :questions
+        end
     end
   end
 
