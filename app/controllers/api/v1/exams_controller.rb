@@ -12,13 +12,14 @@ module Api
             def show
                 exam = Exam.find_by(slug: params[:slug])
                 
-                render json: ExamSerializer.new(exam, options_questions).serialized_json
+                render json: ExamSerializer.new(exam, options).serialized_json
+                # render json: ExamSerializer.new(exam, options).serialized_json
             end
 
-            # def show_reviews # Create a custom method to show the exams with reviews
+            # def exam_questions
             #     exam = Exam.find_by(slug: params[:slug])
                 
-            #     render json: ExamSerializer.new(exam, options).serialized_json
+            #     render json: ExamSerializer.new(exam, options_questions).serialized_json
             # end
 
             def create
@@ -58,7 +59,7 @@ module Api
             end
             
             def options
-                @options ||= { include: %i[reviews] }
+                @options ||= { include: %i[reviews questions] }
             end
 
             def options_questions
