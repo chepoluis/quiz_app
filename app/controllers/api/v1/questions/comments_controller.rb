@@ -5,20 +5,20 @@ class Api::V1::Questions::CommentsController < Api::V1::CommentsQuestionControll
     def index
         comments = @commentable.comments.all
     
-        render json: CommentSerializer.new(comments).serialized_json
+        render json: comment_serializer(comments).serialized_json
     end
 
     def show
         comment = @commentable.comments.find(params[:id])
         
-        render json: CommentSerializer.new(comment).serialized_json
+        render json: comment_serializer(comment).serialized_json
     end
 
     def create
         comment = @commentable.comments.new comment_params
 
         if comment.save
-            render json: CommentSerializer.new(comment).serialized_json
+            render json: comment_serializer(comment).serialized_json
         else
             render json: { error: comment.errors.messages }, status: 422
         end
@@ -28,7 +28,7 @@ class Api::V1::Questions::CommentsController < Api::V1::CommentsQuestionControll
         comment = @commentable.comments.find(params[:id])
         
         if comment.update(comment_params)
-            render json: CommentSerializer.new(comment).serialized_json
+            render json: comment_serializer(comment).serialized_json
         else
             render json: { error: comment.errors.messages }, status: 422
         end
@@ -48,5 +48,9 @@ class Api::V1::Questions::CommentsController < Api::V1::CommentsQuestionControll
 
     def comment_params
         params.require(:comment).permit(:text)
+    end
+
+    def comment_serializer(obj)
+        CommentSerializer.new(obj)
     end
 end
