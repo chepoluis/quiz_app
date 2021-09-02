@@ -2,6 +2,7 @@ class Exam < ApplicationRecord
     has_many :users
     has_many :reviews
     has_many :questions
+    has_many :comments, as: :commentable
 
     before_create :slugify
 
