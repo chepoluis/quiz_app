@@ -75,6 +75,27 @@ const Quiz = (props) => {
 
 	console.log('questions', questions)
 
+	function getRandomInt() {
+		return Math.floor(Math.random() * (3 - 0)) + 0;
+	}
+
+	const random_order_correct_question = () => {
+		
+		const random_number = getRandomInt()
+		console.log('Hello', random_number)
+
+		return questions[currentQuestion].attributes.incorrect_answers.map((answerOption, index) => {
+			if (random_number == index) {
+				return <div key={'correct'}>
+						<button key={answerOption} onClick={() => handleAnswerOptionClick(answerOption)}>{answerOption}</button>
+						<button key={questions[currentQuestion].attributes.correct_answer} onClick={() => handleAnswerOptionClick(questions[currentQuestion].attributes.correct_answer)}>{questions[currentQuestion].attributes.correct_answer}</button>
+					</div>
+			} else {
+				return <button key={answerOption} onClick={() => handleAnswerOptionClick(answerOption)}>{answerOption}</button>
+			}
+		})
+	}
+ 
 	const handleAnswerOptionClick = (isCorrect) => {
 		if (isCorrect) {
 			setScore(score + 1);
@@ -105,10 +126,14 @@ const Quiz = (props) => {
 									<div className='question-text'>{questions[currentQuestion].attributes.question_name}</div>
 								</div>
 								<div className='answer-section'>
-									<button key={questions[currentQuestion].attributes.correct_answer} onClick={() => handleAnswerOptionClick(questions[currentQuestion].attributes.correct_answer)}>{questions[currentQuestion].attributes.correct_answer}</button>
-									{questions[currentQuestion].attributes.incorrect_answers.map((answerOption, index) => (
-										<button key={answerOption} onClick={() => handleAnswerOptionClick(answerOption)}>{answerOption}</button>
-									))}
+									{
+										random_order_correct_question()
+									}
+									{/* <button key={questions[currentQuestion].attributes.correct_answer} onClick={() => handleAnswerOptionClick(questions[currentQuestion].attributes.correct_answer)}>{questions[currentQuestion].attributes.correct_answer}</button> */}
+									{/* {questions[currentQuestion].attributes.incorrect_answers.map((answerOption, index) => (
+										random_order_question(index)
+										// <button key={answerOption} onClick={() => handleAnswerOptionClick(answerOption)}>{answerOption}</button>
+									))} */}
 								</div>
 							</>
 						)
