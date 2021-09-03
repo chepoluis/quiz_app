@@ -1,7 +1,8 @@
 import React, { useState, useEffect } from 'react';
-import { useLocation } from 'react-router-dom';
+import { useLocation, Link } from 'react-router-dom';
 import axios from 'axios'
 import './Quiz.css';
+import { LinkWrapper } from './styled_components/Quiz'
 
 const Quiz = (props) => {
 	const [currentQuestion, setCurrentQuestion] = useState(0);
@@ -82,7 +83,6 @@ const Quiz = (props) => {
 	const random_order_correct_question = () => {
 		
 		const random_number = getRandomInt()
-		console.log('Hello', random_number)
 
 		return questions[currentQuestion].attributes.incorrect_answers.map((answerOption, index) => {
 			if (random_number == index) {
@@ -97,7 +97,8 @@ const Quiz = (props) => {
 	}
  
 	const handleAnswerOptionClick = (isCorrect) => {
-		if (isCorrect) {
+		console.log(isCorrect)
+		if (questions[currentQuestion].attributes.correct_answer == isCorrect) {
 			setScore(score + 1);
 		}
 
@@ -114,8 +115,14 @@ const Quiz = (props) => {
 				{
 					questions.length > 0 ? (
 						showScore ? (
-							<div className='score-section'>
-								You scored {score} out of {questions.length}
+							<div>
+								<div className='score-section'>
+									You scored {score} out of {questions.length} :D
+								</div>
+								<LinkWrapper>
+									<Link to={`/exams/${slug}`}>Submit your review</Link>
+									<Link to="/exams">Go to learn!</Link>
+								</LinkWrapper>
 							</div>
 						) : (
 							<>
@@ -129,11 +136,6 @@ const Quiz = (props) => {
 									{
 										random_order_correct_question()
 									}
-									{/* <button key={questions[currentQuestion].attributes.correct_answer} onClick={() => handleAnswerOptionClick(questions[currentQuestion].attributes.correct_answer)}>{questions[currentQuestion].attributes.correct_answer}</button> */}
-									{/* {questions[currentQuestion].attributes.incorrect_answers.map((answerOption, index) => (
-										random_order_question(index)
-										// <button key={answerOption} onClick={() => handleAnswerOptionClick(answerOption)}>{answerOption}</button>
-									))} */}
 								</div>
 							</>
 						)

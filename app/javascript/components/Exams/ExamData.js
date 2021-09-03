@@ -56,17 +56,14 @@ const LinkWrapper = styled.div`
 const ExamData = (props) => {
   return (
       <Card>
-          {/* <ExamLogo>
-              <img src={'https://open-flights.s3.amazonaws.com/American-Airlines.png'} alt={'maths'}/>
-          </ExamLogo> */}
           <ExamName>{props.attributes.category}</ExamName>
           {/* <Rating score={props.attributes.avg_score}/> */}
           <LinkWrapper>
               <Link to={`/quiz/${props.attributes.slug}`}>Let's learn :)</Link>
           </LinkWrapper>
-          <LinkWrapper>
+          {/* <LinkWrapper>
               <Link to={`/exams/${props.attributes.slug}`}>View reviews</Link>
-          </LinkWrapper>
+          </LinkWrapper> */}
       </Card>
   )
 }

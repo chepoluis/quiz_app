@@ -6,12 +6,12 @@
 #   movies = Movie.create([{ name: 'Star Wars' }, { name: 'Lord of the Rings' }])
 #   Character.create(name: 'Luke', movie: movies.first)
 
-# user = User.new
-# user.email = 'test@example.com'
-# user.password = 'valid_password'
-# user.password_confirmation = 'valid_password'
-# user.encrypted_password = '123456'
-# user.save!
+user = User.new
+user.email = 'test@example.com'
+user.password = 'valid_password'
+user.password_confirmation = 'valid_password'
+user.encrypted_password = '123456'
+user.save!
 
 exams = Exam.create([
     {
@@ -21,6 +21,11 @@ exams = Exam.create([
     },
     {
         category: 'Maths',
+        group: 'multiple',
+        difficulty: 'easy'
+    },
+    {
+        category: 'Mythology',
         group: 'multiple',
         difficulty: 'easy'
     }
@@ -44,6 +49,36 @@ questions = Question.create([
         correct_answer: '4',
         incorrect_answers: ['2', '1', 'Pez'],
         exam: exams[1]
+    },
+    {
+        question_name: 'Which of the following Mesopotamian mythological figures was NOT a deity?',
+        correct_answer: 'Enkidu',
+        incorrect_answers: ['Enki', 'Enlil', 'Enkimdu'],
+        exam: exams[2]
+    },
+    {
+        question_name: 'In Greek Mythology, who was the daughter of King Minos?',
+        correct_answer: 'Ariadne',
+        incorrect_answers: ['Athena', 'Ariel', 'Alana'],
+        exam: exams[2]
+    },
+    {
+        question_name: 'Which Greek &amp; Roman god was known as the god of music, truth and prophecy, healing, the sun and light, plague, poetry, and more?',
+        correct_answer: 'Apollo',
+        incorrect_answers: ['Aphrodite', 'Artemis', 'Athena'],
+        exam: exams[2]
+    },
+    {
+        question_name: 'Nidhogg is a mythical creature from what mythology?',
+        correct_answer: 'Norse',
+        incorrect_answers: ['Egyptian', 'Greek', 'Hindu'],
+        exam: exams[2]
+    },
+    {
+        question_name: 'Who is the Egyptian god of reproduction and lettuce?',
+        correct_answer: 'Min',
+        incorrect_answers: ['Menu', 'Mut', 'Meret'],
+        exam: exams[2]
     }
 ])
 
