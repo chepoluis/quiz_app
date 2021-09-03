@@ -26,7 +26,6 @@ const TotalOutOf = styled.div`
 `
 
 const Header = (props) => {
-    console.log(props)
     const { category, avg_score } = props.attributes
     const total = getTotal()
 

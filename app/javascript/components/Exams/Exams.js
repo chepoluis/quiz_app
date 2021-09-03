@@ -31,7 +31,8 @@ const Grid = styled.div`
     padding: 20px;
 `
 
-const Exams = () => {
+const Exams = (props) => {
+    // console.log('props! ', props.location.pathname.includes('edit'))
     const [exams, setExams] = useState([])
 
     useEffect(() => {
@@ -47,9 +48,10 @@ const Exams = () => {
 
     const grid = exams.map(item => {
         return (
-            <ExamData 
+            <ExamData
                 key={item.attributes.category}
                 attributes={item.attributes}
+                isEdit={props.location.pathname.includes('edit')}
             />
         )
     })

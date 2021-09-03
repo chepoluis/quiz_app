@@ -54,17 +54,26 @@ const LinkWrapper = styled.div`
 `
 
 const ExamData = (props) => {
+  console.log('props', props.isEdit)
   return (
-      <Card>
-          <ExamName>{props.attributes.category}</ExamName>
-          {/* <Rating score={props.attributes.avg_score}/> */}
+    <Card>
+      <ExamName>{props.attributes.category}</ExamName>
+      {/* <Rating score={props.attributes.avg_score}/> */}
+      {
+        props.isEdit ? (
           <LinkWrapper>
-              <Link to={`/quiz/${props.attributes.slug}`}>Let's learn :)</Link>
+            <Link to={`/exams/edit/${props.attributes.slug}`}>Edit exam</Link>
           </LinkWrapper>
-          {/* <LinkWrapper>
+        ) : (
+          <LinkWrapper>
+            <Link to={`/quiz/${props.attributes.slug}`}>Let's learn :)</Link>
+          </LinkWrapper>
+        )
+      }
+      {/* <LinkWrapper>
               <Link to={`/exams/${props.attributes.slug}`}>View reviews</Link>
           </LinkWrapper> */}
-      </Card>
+    </Card>
   )
 }
 

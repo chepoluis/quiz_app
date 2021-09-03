@@ -29,7 +29,7 @@ function Navbar() {
             {SidebarData.map((item, index) => {
               return (
                 <li key={index} className={item.cName}>
-                  <Link to={item.path}>
+                  <Link to={item.path}> {/** TO DO, COLOCAR FLAG edit */}
                     {item.icon}
                     <span className="title_span">{item.title}</span>
                   </Link>

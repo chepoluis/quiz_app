@@ -23,6 +23,12 @@ export const SidebarData = [
     icon: <IoIcons.IoIosPaper />,
     cName: 'nav-text'
   },
+  {
+    title: 'Questions',
+    path: '/exams/edit',
+    icon: <IoIcons.IoIosPaper />,
+    cName: 'nav-text'
+  },
   // {
   //   title: 'Products',
   //   path: '/products',
