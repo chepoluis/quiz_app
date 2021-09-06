@@ -4,6 +4,7 @@ import Home from './Home/Home'
 import Exams from './Exams/Exams'
 import Exam from './Exam/Exam'
 import EditExam from './Exam/EditExam'
+import NewQuestionn from './Question/NewQuestion'
 import Quiz from './Quiz/Quiz'
  
 const App = () => {
@@ -13,6 +14,7 @@ const App = () => {
             <Route exact path="/exams" component={ Exams }/>
             <Route exact path="/exams/edit" component={ Exams }/>
             <Route exact path="/exams/edit/:slug" component={ EditExam }/>
+            <Route exact path="/exams/edit/:slug/new_question" component={ NewQuestionn }/>
             <Route exact path="/exams/:slug" component={ Exam }/>
             <Route exact path="/quiz/:slug" component={ Quiz }/>
         </Switch>
