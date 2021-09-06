@@ -47,6 +47,7 @@ module Api
                 
                 if exam.destroy
                     head :no_content
+                    CreateExamWorker.perform_async("#{params[:slug]} exam was deleted")
                 else
                     render json: { error: exam.errors.messages }, status: 422
                 end
