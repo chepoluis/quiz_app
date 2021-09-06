@@ -7,7 +7,7 @@ const Question = (props) => {
     const [editQuestion, setEditQuestion] = useState({})
     const [incorrectAnswers, setIncorrectAnswers] = useState([])
     
-    useEffect(() => {
+    const loadData = () => {
         const url = `/api/v1/exams/${props.slug}`
 
         axios.get(url).then(res => {
@@ -17,6 +17,9 @@ const Question = (props) => {
         }).catch(err => {
             console.log(err)
         })
+    }
+    useEffect(() => {
+        loadData()
     }, [])
 
     let questions = []
@@ -72,6 +75,7 @@ const Question = (props) => {
         axios.delete(`/api/v1/questions/${id}`)
         .then(res => {
             console.log(res)
+            loadData()
         }).catch(err => {
             console.error(err)
         })
