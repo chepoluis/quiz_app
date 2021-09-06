@@ -6,7 +6,7 @@ const NewQuestionn = (props) => {
     const [newQuestion, setNewQuestion] = useState({})
     const [incorrectAnswersArray, setIncorrectAnswersArray] = useState([])
 
-    console.log("props: ", props.location.state.exam_id)
+    console.log("props: ", props)
     // let incorrectAnswersArray = []
     const handleChange = (e, index) => {
         e.preventDefault()
@@ -45,7 +45,9 @@ const NewQuestionn = (props) => {
             console.error(err)
         })
 
-        props.history.goBack()
+        props.history.push({
+            pathname: `/exams/edit/${props.match.params.slug}`
+        })
     }
 
     return (

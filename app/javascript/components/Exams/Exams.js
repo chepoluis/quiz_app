@@ -56,11 +56,22 @@ const Exams = (props) => {
         )
     })
 
+    const newExam = () => {
+        props.history.push({
+            pathname: '/exams/edit/new_exam'
+        })
+    }
+
     return (
         <Home>
             <Header>
                 <h1>Many exams</h1>
                 <Subheader>Get ready for the future</Subheader>
+                {
+                    props.location.pathname.includes('edit') && (
+                        <button onClick={newExam} style={{ width: '150px' }}>Add new Exam</button>
+                    )
+                }
             </Header>
             <Grid>
                 { grid }

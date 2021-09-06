@@ -47,25 +47,25 @@ const EditExam = (props) => {
         // console.log('review ', review)
 
         axios.patch(`/api/v1/exams/${slug}`, editExam)
-            .then(res => {
-                console.log(res)
-                //const included = [...exam.included, res.data.data]
-                //console.log('Included: ', included)
+        .then(res => {
+            console.log(res)
+            //const included = [...exam.included, res.data.data]
+            //console.log('Included: ', included)
 
-                // setExam({...exam, included})
-                // setReview({title: '', description: '', score: 0})
-            }).catch(err => {
-                console.error(err)
-            })
+            // setExam({...exam, included})
+            // setReview({title: '', description: '', score: 0})
+        }).catch(err => {
+            console.error(err)
+        })
     }
 
     const deleteExam = (e) => {
         e.preventDefault()
 
-        console.log('Deleted')
         axios.delete(`/api/v1/exams/${slug}`)
             .then(res => {
                 console.log(res)
+                props.history.goBack()
             }).catch(err => {
                 console.error(err)
             })
