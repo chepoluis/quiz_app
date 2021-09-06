@@ -5,20 +5,20 @@ module Api
             def index
                 reviews = Review.all
             
-                render json: ReviewSerializer.new(reviews).serialized_json
+                render json: review_serializer(reviews).serialized_json
             end
 
             def show
                 review = Review.find(params[:id])
                 
-                render json: ReviewSerializer.new(review).serialized_json
+                render json: review_serializer(review).serialized_json
             end
 
             def create
                 review = exam.reviews.new(review_params)
                 
                 if review.save
-                    render json: ReviewSerializer.new(review).serialized_json
+                    render json: review_serializer(review).serialized_json
                 else
                     render json: { error: review.errors.messages }, status: 422
                 end
@@ -28,7 +28,7 @@ module Api
                 review = Review.find(params[:id])
                 
                 if review.update(review_params)
-                    render json: ReviewSerializer.new(review).serialized_json
+                    render json: review_serializer(review).serialized_json
                 else
                     render json: { error: review.errors.messages }, status: 422
                 end
@@ -53,6 +53,10 @@ module Api
             
             def review_params
                 params.require(:review).permit(:title, :description, :score, :exam_id, :user_id)
+            end
+
+            def review_serializer(obj)
+                ReviewSerializer.new(obj)
             end
         end
     end
