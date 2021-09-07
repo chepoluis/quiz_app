@@ -86,7 +86,6 @@ test:
 #   password: <%= ENV['QUIZ_APP_DATABASE_PASSWORD'] %>
 
 production:
+  <<: *default
   adapter: postgresql
-  encoding: unicode
-  pool: <%= ENV.fetch("RAILS_MAX_THREADS") { 5 } %>
-  url: <%= ENV['DATABASE_URL'] %>
+  database: db/production.sqlite3
